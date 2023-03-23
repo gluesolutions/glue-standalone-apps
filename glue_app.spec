@@ -31,6 +31,11 @@ a = Analysis(
         "glue_small_multiples",
         "glue_heatmap",
         "pvextractor",
+        "anndata",
+        "scanpy",
+        "pyranges",
+        "seaborn",
+
     ],
     hookspath=["hooks"],
     hooksconfig={

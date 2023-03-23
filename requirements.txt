@@ -11,3 +11,6 @@ numpy<1.22
 astropy<5.0
 PyQt5==5.14.2
 PyQtWebEngine==5.14.0
+anndata>=0.8
+scanpy>=1.9
+enrichrpy>=0.1

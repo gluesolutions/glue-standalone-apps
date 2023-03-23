@@ -27,8 +27,10 @@ a = Analysis(
         "glue_wwt",
         "glue_plotly",
         "glue_statistics",
+        "glue_genes",
+        "glue_small_multiples",
+        "glue_heatmap",
         "pvextractor",
-        "anndata",
     ],
     hookspath=["hooks"],
     hooksconfig={

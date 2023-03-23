@@ -14,3 +14,8 @@ PyQtWebEngine==5.14.0
 anndata>=0.8
 scanpy>=1.9
 enrichrpy>=0.1
+glue_genes>=1.0
+glue_small_multiples
+glue_heatmap
+pyranges
+zarr

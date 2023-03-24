@@ -2,7 +2,13 @@ import os
 import sys
 import time
 
-# Try to stop infinite loop
+# Try to stop infinite loop that occurs because (I think) 
+# scanpy uses the multiprocessing library which does not 
+# always play nicely with pyinstaller
+# https://github.com/pyinstaller/pyinstaller/issues/2322#issuecomment-699603755
+
+# This prevents an infinite loop of starting new instances
+# but leaves two glue processes running.
 import multiprocessing
 multiprocessing.freeze_support()
 multiprocessing.set_start_method('spawn')
@@ -11,6 +17,7 @@ from pywwt import qt
 from glue import load_plugins
 from glue.logger import logger
 from glue.app.qt import GlueApplication
+from glue_genes.glue_single_cell.anndata_factory import setup_anndata
 
 qt.APP_LIVELINESS_DEADLINE = 60
 
@@ -36,11 +43,13 @@ if __name__ == "__main__":
     if session:
 
         ga = GlueApplication.restore_session(session)
+        setup_anndata(ga.session, ga.data_collection)
         ga.app.exec_()
 
     else:
 
         ga = GlueApplication()
+        setup_anndata(ga.session, ga.data_collection)
 
         if '--test' in sys.argv:
 

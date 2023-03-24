@@ -19,3 +19,4 @@ glue_small_multiples
 glue_heatmap
 pyranges
 zarr
+psutil

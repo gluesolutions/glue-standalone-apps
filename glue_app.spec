@@ -36,6 +36,7 @@ a = Analysis(
         "pyranges",
         "seaborn",
         "enrichrpy",
+        "psutil",
 
     ],
     hookspath=["hooks"],

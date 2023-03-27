@@ -95,8 +95,8 @@ else:
         name="glue.app",
         icon=icon,
         info_plist={
-            "CFBundleName": "glueviz",
-            "CFBundleDisplayName": "glueviz",
+            "CFBundleName": "gluegenes",
+            "CFBundleDisplayName": "gluegenes",
             "CFBundleVersion": "1.2",
             "CFBundleShortVersionString": "1.2",
             "NSHighResolutionCapable": "True",

@@ -20,3 +20,4 @@ glue_heatmap
 pyranges
 zarr
 psutil
+fastcluster

@@ -18,7 +18,6 @@ from glue.logger import logger
 from glue.app.qt import GlueApplication
 from glue_genes.glue_single_cell.anndata_factory import setup_anndata
 
-qt.APP_LIVELINESS_DEADLINE = 60
 
 os.environ['QTWEBENGINE_CHROMIUM_FLAGS'] = '--ignore-gpu-blacklist'
 

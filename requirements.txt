@@ -6,7 +6,7 @@ glue-plotly==0.4.0
 pvextractor
 notebook
 numba==0.58.1
-numpy==1.25
+numpy==1.24.4
 astropy<5.0
 PyQt5==5.14.2
 anndata>=0.8

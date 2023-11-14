@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-10.15, ubuntu-18.04, windows-2019]
+        os: [macos-latest, windows-latest]
     steps:
 
     - name: Checkout code
@@ -23,12 +23,12 @@ jobs:
     # Not all dependencies work correctly on Python 3.9 on Windows yet so we use
     # Python 3.8 there.
     - name: Set up Python 3.8
-      if: matrix.os == 'windows-2019'
+      if: matrix.os == 'windows-latest'
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
     - name: Set up Python 3.9
-      if: matrix.os != 'windows-2019'
+      if: matrix.os != 'windows-latest'
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
@@ -43,7 +43,7 @@ jobs:
       shell: bash
       run: ./prepare_"$RUNNER_OS".sh ${GITHUB_REF##*/}
     - name: Output list of included packages
-      if: matrix.os == 'ubuntu-18.04'
+      if: matrix.os == 'macos-latest'
       run: pip freeze > included-packages.txt
     - name: Install awscli
       run: pip install awscli
@@ -56,7 +56,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Upload package list to S3
-      if: github.event_name != 'pull_request' && matrix.os == 'ubuntu-18.04'
+      if: github.event_name != 'pull_request' && matrix.os == 'macos-latest'
       run: aws s3 cp included-packages.txt s3://gluesolutions/installers/${GITHUB_REF##*/}/
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

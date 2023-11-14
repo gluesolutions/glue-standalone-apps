@@ -13,7 +13,6 @@ import multiprocessing
 multiprocessing.freeze_support()
 multiprocessing.set_start_method('spawn')
 
-from pywwt import qt
 from glue import load_plugins
 from glue.logger import logger
 from glue.app.qt import GlueApplication

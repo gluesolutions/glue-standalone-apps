@@ -17,3 +17,7 @@ pyranges
 zarr
 psutil
 fastcluster
+squidpy
+ome-zarr
+tifffile
+shapely

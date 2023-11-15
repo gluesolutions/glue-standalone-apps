@@ -3,6 +3,16 @@
 import os
 import sys
 
+# Version needs to be three integers separated by period, which is
+# the case for stable tags, but otherwise we need to use a dummy version
+
+glue_version = os.environ.get("GITHUB_REF_NAME", "")
+
+if glue_version.count(".") == 2:
+    VERSION = glue_version
+else:
+    VERSION = "1.0.0"
+
 if os.name == "nt":
     icon = os.path.abspath("icon.ico")
     onefile = True
@@ -37,7 +47,6 @@ a = Analysis(
         "seaborn",
         "enrichrpy",
         "psutil",
-
     ],
     hookspath=["hooks"],
     hooksconfig={
@@ -97,9 +106,10 @@ else:
         info_plist={
             "CFBundleName": "gluegenes",
             "CFBundleDisplayName": "gluegenes",
-            "CFBundleVersion": "1.2",
-            "CFBundleShortVersionString": "1.2",
+            "CFBundleVersion": VERSION,
+            "CFBundleShortVersionString": VERSION,
             "NSHighResolutionCapable": "True",
+            "LSApplicationCategoryType": "public.app-category.education",
             "CFBundleDocumentTypes": [
                 {
                     "CFBundleTypeName": "Glue Session Files",

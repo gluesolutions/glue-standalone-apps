@@ -23,22 +23,22 @@ jobs:
 
     # osx signing based on https://melatonin.dev/blog/how-to-code-sign-and-notarize-macos-audio-plugins-in-ci/
 
-    - name: Import Developer ID Application Certificate
-      if: ${{ matrix.os == 'macos-11' }}
-      uses: apple-actions/import-codesign-certs@v1
-      with:
-        p12-file-base64: ${{ secrets.DEV_ID_APP_CERT }}
-        p12-password: ${{ secrets.DEV_ID_APP_PASSWORD }}
-        keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
+    # - name: Import Developer ID Application Certificate
+    #   if: ${{ matrix.os == 'macos-11' }}
+    #   uses: apple-actions/import-codesign-certs@v1
+    #   with:
+    #     p12-file-base64: ${{ secrets.DEV_ID_APP_CERT }}
+    #     p12-password: ${{ secrets.DEV_ID_APP_PASSWORD }}
+    #     keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
 
-    - name: Import Mac Installer Distribution Certificate
-      if: ${{ matrix.os == 'macos-11' }}
-      uses: apple-actions/import-codesign-certs@v1
-      with:
-        p12-file-base64: ${{ secrets.MAC_INST_DIST_CERT }}
-        p12-password: ${{ secrets.MAC_INST_DIST_PASSWORD }}
-        create-keychain: false
-        keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
+    # - name: Import Mac Installer Distribution Certificate
+    #   if: ${{ matrix.os == 'macos-11' }}
+    #   uses: apple-actions/import-codesign-certs@v1
+    #   with:
+    #     p12-file-base64: ${{ secrets.MAC_INST_DIST_CERT }}
+    #     p12-password: ${{ secrets.MAC_INST_DIST_PASSWORD }}
+    #     create-keychain: false
+    #     keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
 
     - name: Checkout code
       uses: actions/checkout@v2

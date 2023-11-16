@@ -44,7 +44,8 @@ a = Analysis(
         "psutil",
         "ome_zarr",
         "squidpy",
-        "tifffile"
+        "tifffile",
+        "shapely",
     ],
     hookspath=["hooks"],
     hooksconfig={

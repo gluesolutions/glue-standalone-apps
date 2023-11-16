@@ -1,4 +1,3 @@
-import os
 import sys
 import time
 
@@ -16,10 +15,7 @@ multiprocessing.set_start_method('spawn')
 from glue import load_plugins
 from glue.logger import logger
 from glue.app.qt import GlueApplication
-from glue_genes.glue_single_cell.anndata_factory import setup_anndata
 
-
-os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = "--ignore-gpu-blacklist"
 
 logger.setLevel("INFO")
 
@@ -42,13 +38,11 @@ if __name__ == "__main__":
     if session:
 
         ga = GlueApplication.restore_session(session)
-        setup_anndata(ga.session, ga.data_collection)
         ga.app.exec_()
 
     else:
 
         ga = GlueApplication()
-        setup_anndata(ga.session, ga.data_collection)
 
         if "--test" in sys.argv:
 
@@ -59,10 +53,6 @@ if __name__ == "__main__":
             from glue.viewers.image.qt import ImageViewer
 
             ga.new_data_viewer(ImageViewer)
-
-            from glue_wwt.viewer.qt_data_viewer import WWTQtViewer
-
-            ga.new_data_viewer(WWTQtViewer)
 
             from glue_vispy_viewers.scatter.scatter_viewer import VispyScatterViewer
 
